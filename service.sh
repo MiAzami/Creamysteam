@@ -5,15 +5,6 @@ MODDIR=${0%/*}
 
 sleep 5
 
-#pmu
-echo "-1 1" > /proc/swpm/enable
-echo "2" > /proc/swpm/swpm_pmsr_trigger
-echo "1" > /proc/swpm/swpm_arm_pmu
-echo "1" > /proc/swpm/pmu_ms_mode
-echo "1" > /proc/pmsr/enable
-echo "1" > /proc/perfmgr/perf_ioctl
-echo "1" > /proc/perfmgr/xgff_ioctl
-
 # CPU SET
 for cpus in /sys/devices/system/cpu
     do
@@ -46,9 +37,8 @@ echo "performance" > /sys/devices/system/cpu/cpufreq/policy7/scaling_governor
 # GPU 
 echo "performance" > /sys/class/devfreq/mtk-dvfsrc-devfreq/governor
 echo "performance" > /sys/class/devfreq/13000000.mali/governor
-echo "always_on" > /sys/class/misc/mali0/device/power_policy
+echo "coarse_demand" > /sys/class/misc/mali0/device/power_policy
 echo "-1" > /proc/gpufreqv2/fix_target_opp_index
-echo "enable" > /proc/gpufreqv2/aging_mode
 
 # CPU SET
 chmod 644 /sys/devices/system/cpu/*/cpufreq/scaling_max_freq
