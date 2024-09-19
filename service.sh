@@ -214,15 +214,6 @@ echo "1" > /proc/sys/net/ipv4/tcp_ecn
 echo "1" > /proc/sys/net/ipv4/tcp_sack
 echo "1" > /proc/sys/net/ipv4/tcp_timestamps
 
-# CPU Parameter Enable
-echo "1" > /sys/module/mtk_core_ctl/parameters/policy_enable
-echo "1" > /sys/devices/system/cpu/cpu4/core_ctl/enable
-echo "1" > /sys/devices/system/cpu/cpu7/core_ctl/enable
-echo "1" > /sys/devices/system/cpu/cpu6/core_ctl/enable
-echo "1" > /sys/devices/system/cpu/cpu4/core_ctl/core_ctl_boost
-echo "1" > /sys/devices/system/cpu/cpu6/core_ctl/core_ctl_boost
-echo "1" > /sys/devices/system/cpu/cpu7/core_ctl/core_ctl_boost
-
 fstrim -v /cache
 fstrim -v /metadata
 fstrim -v /data
